@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
-//import {ViewPropTypes} from 'deprecated-react-native-prop-types';
+import {ViewPropTypes, TextPropTypes} from 'deprecated-react-native-prop-types';
 
 const PAGE_CHANGE_DELAY = 4000;
 
 // if ViewPropTypes is not defined fall back to View.propTypes (to support RN < 0.44)
-const viewPropTypes = View.propTypes;
+const viewPropTypes = ViewPropTypes || View.propTypes;
+const textPropTypes = TextPropTypes || Text.propTypes;
 
 /**
  * Animates pages in cycle
@@ -33,18 +34,18 @@ export default class Carousel extends Component {
     contentContainerStyle: viewPropTypes.style,
     pageInfo: PropTypes.bool,
     pageInfoBackgroundColor: PropTypes.string,
-    pageInfoTextStyle: Text.propTypes.style,
+    pageInfoTextStyle: textPropTypes.style,
     pageInfoBottomContainerStyle: viewPropTypes.style,
     pageInfoTextSeparator: PropTypes.string,
     bullets: PropTypes.bool,
-    bulletsContainerStyle: Text.propTypes.style,
-    bulletStyle: Text.propTypes.style,
+    bulletsContainerStyle: textPropTypes.style,
+    bulletStyle: textPropTypes.style,
     hideBulletsIndices: PropTypes.arrayOf(PropTypes.number),
     arrows: PropTypes.bool,
-    arrowsContainerStyle: Text.propTypes.style,
-    arrowStyle: Text.propTypes.style,
-    leftArrowStyle: Text.propTypes.style,
-    rightArrowStyle: Text.propTypes.style,
+    arrowsContainerStyle: textPropTypes.style,
+    arrowStyle: textPropTypes.style,
+    leftArrowStyle: textPropTypes.style,
+    rightArrowStyle: textPropTypes.style,
     leftArrowText: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.element,
@@ -53,7 +54,7 @@ export default class Carousel extends Component {
       PropTypes.string,
       PropTypes.element,
     ]),
-    chosenBulletStyle: Text.propTypes.style,
+    chosenBulletStyle: textPropTypes.style,
     onAnimateNextPage: PropTypes.func,
     swipe: PropTypes.bool,
     isLooped: PropTypes.bool,
